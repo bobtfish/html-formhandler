@@ -1036,7 +1036,7 @@ sub build_default_method {
     $set_default ||= "default_" . convert_full_name($self->full_name);
     if ( $self->form && $self->form->can($set_default) ) {
         $self->_set_default_method(
-            sub { $self = shift; return $self->form->$set_default($self, $self->form->item); }
+            sub { my $self = shift; return $self->form->$set_default($self, $self->form->item); }
         );
     }
 }
